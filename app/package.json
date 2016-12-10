@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "requirejs + angularjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sushilgupta.25@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bower-requirejs": "^1.2.0"
+  }
+}
