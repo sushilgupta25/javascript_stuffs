@@ -1,13 +1,14 @@
-define(['app', 'dashboardService'], function(app, dashboardService){
-    function dashboardController($scope, $http, dashboardService){
-    	dashboardService.getPayment().then(function(data){
-    		// handle data
-    	}).catch(function(data){
-    		console.log(data);
-    	});
-        $scope.isWorking = false;
-    }
-    dashboardController.$inject = ['$scope', '$http', 'dashboardService'];
 
+define(['app', 'dashboardService', 'googleService'], function(app){
+    function dashboardController($scope, $http, dashboardService, googleService){
+    	googleService.loginUser(function(authResult){
+            if(authResult && !authResult.error){    // Handle if already logged in user(Gmail).
+                googleService.grabRecords(function(data){
+                    $scope.gmailContacts = data.feed.entry;
+                })
+            }
+        })
+    }
+    dashboardController.$inject = ['$scope', '$http', 'dashboardService', 'googleService'];
     app.register.controller('dashboardController', dashboardController);
 });

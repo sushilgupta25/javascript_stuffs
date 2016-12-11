@@ -5,7 +5,8 @@ requirejs.config({
 		angularRoute: 'bower_components/angular-route/angular-route',
 		routeResolver: 'routeResolver',
 		dashboardController: "modules/dashboard/dashboardController",
-		dashboardService: 'modules/dashboard/dashboardService'
+		dashboardService: 'modules/dashboard/dashboardService',
+		googleService: 'services/googleService'
 	},
 	shim: {
 		angularRoute: {
