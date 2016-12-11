@@ -42,6 +42,13 @@ define([
 	                    deferred.resolve('got it!!');
 	                },1000);
 	                return deferred.promise;
+	            }],
+	            loadCustomPlaceholder: ['$q', function($q){
+	            	var deferred = $q.defer();
+	            	require(['directives/customPlaceholder/placeholder'], function(){
+	            		deferred.resolve();
+	            	});
+	            	return deferred.promise;
 	            }]
 	        }
 	    }))

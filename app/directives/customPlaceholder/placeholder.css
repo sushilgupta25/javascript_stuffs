@@ -1,0 +1,25 @@
+.custom-md-input {
+  display: block;
+  position: relative;
+  margin: 0 5px 0 0;
+  width: inherit;
+}
+.custom-md-input input {
+    transition: .1s all linear;
+}
+
+.custom-md-input label {
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    font-size: 12px;
+    color: #0086bf;
+    transition: .1s all linear;
+    cursor: text;
+    z-index: 3;
+}
+
+.custom-md-input.active label {
+  top: -14px;
+  font-size: 10px;
+}
