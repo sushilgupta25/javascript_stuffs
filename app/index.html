@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript" src="node_modules/requirejs/require.js" data-main="require_config.js"></script>
+	<script type="text/javascript">
+		require([
+			'app'
+		], function(app){
+			angular.element(function() {
+				angular.bootstrap(document, ['app'])
+			});
+		})
+	</script>
+	<div ng-view=""></div>
+</body>
+</html>
