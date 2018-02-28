@@ -1,0 +1,62 @@
+const sortAlphaNum = (objA, objB) => {
+  const MONTH = "month"
+  const AGE = "age";
+
+  let regexpString = /([a-z]+)/gi
+  let regexpNumber = /([0-9]+)/gi 
+
+  let a = (objA.value.toString())
+  let b = (objB.value.toString())
+
+  const getAgeFromMonth = (months) => {
+    return parseFloat(months/12);
+  }
+  const getMaxNumberFromRange = (range) => {
+    if(range.length > 1){
+      return range[1];
+    }
+    return range[0];
+  }
+
+  const doSort = (a, b) => {
+    if (a === b) {
+      return a === b ? 0 : a > b ? 1 : -1
+    } else {
+      return a > b ? 1 : -1
+    }
+  }
+
+  const ageStrategy = () => {
+    let aString = a.match(regexpString)
+    let aNumber = a.match(regexpNumber)
+
+    let bString = b.match(regexpString)
+    let bNumber = b.match(regexpNumber)
+
+    a = parseInt(getMaxNumberFromRange(aNumber));
+    b = parseInt(getMaxNumberFromRange(bNumber));
+
+    if(aString.toString().match(new RegExp(MONTH, 'ig'))){
+      a = parseFloat(a/12);
+    }
+    if(bString.toString().match(new RegExp(MONTH, 'ig'))){
+      b = parseFloat(b/12);
+    }
+    return doSort(a, b);
+  }
+
+  const stringGenericStrategy = () => {
+    return doSort(a, b);
+  }
+
+  const numericStrategy = () => {
+    return doSort(parseFloat(a), parseFloat(b));
+  }
+  if(a.match(new RegExp(AGE, 'ig')) || a.match(new RegExp(MONTH, 'ig'))){
+    return ageStrategy();
+  } else if(a.match(/[a-z]/ig) || b.match(/[a-z]/ig)) {
+    return stringGenericStrategy();
+  } else {
+    return numericStrategy();
+  }
+}
